@@ -26,8 +26,7 @@ void delay_us(int);
 /*
 /*******************************************************************/
 
-bit lcd_busy()
-{
+bit lcd_busy() {
 	LCD_RS = 0;
 	LCD_RW = 1;
 	LCD_EN = 1;
@@ -46,8 +45,7 @@ bit lcd_busy()
 /*
 /*******************************************************************/
 
-void lcd_wcmd(uchar cmd)
-{
+void lcd_wcmd(uchar cmd) {
 	while(lcd_busy());
 
 	LCD_RS = 0;
@@ -70,8 +68,7 @@ void lcd_wcmd(uchar cmd)
 /*
 /*******************************************************************/
 
-void lcd_wdat(uchar dat)
-{
+void lcd_wdat(uchar dat) {
 	while(lcd_busy());
 	
 	LCD_RS = 1;
@@ -90,8 +87,7 @@ void lcd_wdat(uchar dat)
 /*
 /*******************************************************************/
 
-void lcd_pos(uchar pos)
-{
+void lcd_pos(uchar pos) {
 	lcd_wcmd(pos|0x80);		//資料指針=80+位址變量
 }
 
@@ -101,8 +97,7 @@ void lcd_pos(uchar pos)
 /*
 /*******************************************************************/
 
-void lcd_init()
-{
+void lcd_init() {
 	delay(15);				 //等待LCD電源穩定
 	lcd_wcmd(0x38);			 //16*2顯示，5*7點陣，8位資料
 	
