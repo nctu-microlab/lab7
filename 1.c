@@ -66,7 +66,8 @@ void print_time(void) {
 
 void timer0_init() {
 	IE |= 0x82;
-	(TMOD &= 0xF0) |= 0x01;
+	TMOD &= 0xF0;
+	TMOD |= 0x01;
 	
 	TH0 = (65536-50000) >> 8;
 	TL0 = (65536-50000) & 0x00FF;
